@@ -93,7 +93,8 @@ class Dog
     
         dog = DB[:conn].execute(sql,name,breed)
     
-        if !dog.empty?
+        #!dog.empty?
+        if dog IS NOT EXISTS
           find_dog = dog[0]
           dog = Dog.new(id: find_dog[0], name: find_dog[1], breed: find_dog[2])
         else
